@@ -45,7 +45,7 @@ class Item(models.Model):
     item_price = models.FloatField(default=1.0)
 
     def __str__(self):
-        return str(self.item_name) + "  Qty: " + str(self.item_quantity)
+        return str(self.item_name) + "  Qty: " + str(self.on_order)
 
 
 class Simple(models.Model):

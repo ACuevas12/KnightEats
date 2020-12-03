@@ -124,7 +124,7 @@ def ViewMenu(request):
                 item_clone = Item(
                     item_name=request.POST.get('_itemName'),
                     item_quantity=item_quantity,
-                    item_price=request.POST.get('_itemPrice'),
+                    item_price=request.POST.get('_itemPrice')*item_quantity,
                     on_order=Order.objects.get(order_num__exact=order_number_sent),
                     on_menu=ItemMenu.objects.get(menu_name__exact="Ordered Menu"),
                     on_category=ItemCategory.objects.get(category_name__exact=request.POST.get('_itemCategory')),
