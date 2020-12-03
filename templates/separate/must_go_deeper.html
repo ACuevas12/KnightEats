@@ -1,0 +1,33 @@
+<!-- ordering/must_go_deeper.html -->
+{% extends 'base.html' %}
+
+{% block title %}Active Orders{% endblock %}
+
+{% block content %}
+<form action="{% url 'clone_page' %}">
+	<input type="submit" value="Go Back"/>
+</form>
+<p></p>
+
+<form action "{% url 'deep_page' %}" method='post'>
+	{% csrf_token %}
+	{{form}}
+	<input type="submit" value="New Order" name="_newOrder"/>
+</form>
+		<ol>
+		{% for item in menu %}
+			<li>
+			-- {{item.item_name}} -- Qty: {{item.item_quantity}} -- Price: {{item.item_price}}
+				<form action "{% url 'deep_page' %}" method='post'>
+				<input type="hidden" value="{{item.item_name}}" name="_itemName"/>
+				<input type="hidden" value="{{item.item_price}}" name="_itemPrice"/>
+				<input type="hidden" value="{{item.on_order.order_num}}" name="_itemOrder"/>
+				<input type="hidden" value="{{item.on_category.category_name}}" name="_itemCategory"/>
+					{% csrf_token %}
+					{{form2}}
+					<input type="submit" value="Submit" name="_newItem"/>
+				</form>
+			</li>
+		{% endfor %}
+		</ol>
+{% endblock %}

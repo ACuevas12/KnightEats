@@ -1,0 +1,20 @@
+<!-- ordering/orders.html -->
+{% extends 'base.html' %}
+
+{% block title %}Active Orders{% endblock %}
+
+{% block content %}
+<form action="{% url 'hub' %}">
+	<input type="submit" value="Go Back"/>
+</form>
+	<ol>
+	{% for order in my_orders %}
+		<li>
+		Order ID: {{order.order_num}}
+			<form action="{% url 'view_order' order.order_num %}">
+				<p><input type="submit" value="Show order #{{order.order_num}}"></p>
+			</form>
+		</li>
+	{% endfor %}
+	</ol>
+{% endblock %}

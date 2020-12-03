@@ -1,0 +1,16 @@
+<!-- templates/AccountManagement/signup.html -->
+{% extends 'base.html' %}
+
+{% block title %}Welcome to KnightEats{% endblock %}
+
+{% block content %}
+<form action="{% url 'start' %}">
+  <input type="submit" value="Go Back"/>
+</form>
+  <h2>Create an Account</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign Up</button>
+</form>
+{% endblock %}

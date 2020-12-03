@@ -1,0 +1,26 @@
+<!-- ordering/orders_pay.html -->
+{% extends 'base.html' %}
+
+{% block title %}Pay for Orders{% endblock %}
+
+{% block content %}
+<form action="{% url 'hub' %}">
+	<input type="submit" value="Go Back"/>
+</form>
+	<ol>
+	{% for order in my_orders %}
+		<li>
+		Order ID: {{order.order_num}}
+		<br>Paid = {{order.order_paid}}
+			<form action="{% url 'view_order' order.order_num %}">
+				<p><input type="submit" value="Show order #{{order.order_num}}"></p>
+			</form>
+		</li>
+	{% endfor %}
+	</ol>
+<form action ="{% url 'paid_order' %}" method='post'>
+	{% csrf_token %}
+	{{form}}
+	<input type="submit" value="Send Payment" name="_categoryField"/>
+</form>
+{% endblock %}

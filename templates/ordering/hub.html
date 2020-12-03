@@ -1,0 +1,30 @@
+<!-- ordering/hub.html -->
+{% extends 'base.html' %}
+
+{% block title %}Eats Hub{% endblock %}
+
+{% block content %}
+<form action="{% url 'start2' %}">
+	<input type="submit" value="Go Back"/>
+</form>
+<h1>Knight Eats Hub</h1>
+<p>for {{ user.username }}</p>
+<p>Order Management</p>
+<form action="{% url 'view_menu' %}">
+	<input type="submit" value="Place New Order"/>
+</form>
+<p></p>
+<form action="{% url 'order_list' %}">
+	<input type="submit" value="See Active Orders"/>
+</form>
+<p></p>
+<form action="{% url 'finished_order_list' %}">
+	<input type="submit" value="See Ready Orders"/>
+</form>
+<br><br>
+<!--
+<form action="{% url 'test_page' %}">
+	<input type="submit" value="Button to Test"/>
+</form>
+-->
+{% endblock %}

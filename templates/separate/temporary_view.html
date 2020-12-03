@@ -1,0 +1,17 @@
+<!-- ordering/temporary_view.html -->
+{% extends 'base.html' %}
+
+{% block title %}Temporary{% endblock %}
+
+{% block content %}
+<form action "/test_page/" method='post'>
+	{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" name="_single">
+	<input type="submit" value="Submit Twice" name="_double">
+</form>
+
+<form action="{% url 'clone_page' %}">
+	<input type="submit" value="Clone Item"/>
+</form>
+{% endblock %}

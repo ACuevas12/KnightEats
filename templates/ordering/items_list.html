@@ -1,0 +1,23 @@
+<!-- ordering/items_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Items On List{% endblock %}
+
+{% block content %}
+<form action="{% url 'hub' %}">
+	<input type="submit" value="Back to Hub"/>
+</form>
+	<h2>--Order Code: {{store}} 
+	<br>--	Name: {{user.username}}</h2>
+	<h3>--	Time Placed: {{time_placed}}</h3>
+		<ul>
+		{% for item in my_items %}
+			<li>
+			-- {{item.item_name}} -- Qty: {{item.item_quantity}} -- Price: {{item.item_price}}
+			</li>
+		{% endfor %}
+		</ul>
+	<h3>Order Total: ${{order_total|floatformat:2}}</h3>
+	<h4>Tax = 6.5%: ${{order_tax|floatformat:3}}</h4>
+	<h3>Order Final Total: ${{order_after_tax|floatformat:2}}</h3>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!-- mythings.html -->
+{% extends 'base.html' %}
+
+{% block title %}My Things{% endblock %}
+
+{% block content %}
+<form action="{% url 'start2' %}">
+	<input type="submit" value="Go Back"/>
+</form>
+<h1>My Things</h1>
+<p>for {{ user.username }}</p>
+<p>Account Management</p>
+<form action="{% url 'archived_order_list' %}">
+	<input type="submit" value="See Archived Orders"/>
+</form>
+<br><br>
+<!--
+<form action="{% url 'test_page' %}">
+	<input type="submit" value="Button to Test"/>
+</form>
+-->
+{% endblock %}

@@ -1,0 +1,31 @@
+<!-- templates/cont.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+ <h2>Welcome {{ user.username }}!</h2>
+ What would you like to do today?
+  <p>
+	<form action="{% url 'start2' %}">
+		<input type="submit" value="Go to Homepage"/>
+	</form>
+  </p>
+  <p>
+	{% if request.user.is_superuser %}
+		<form action="{% url 'admin:index' %}">
+			<input type="submit" value="Access Admin Panel"/>
+		</form>
+	{% endif %}
+  </p>
+  <form action="{% url 'logout' %}">
+	<input type="submit" value="Logout"/>
+  </form>
+{% else %}
+  <p>You are not logged in</p>
+  <form action="{% url 'login' %}">
+	<input type="submit" value="Login"/>
+  </form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+<!-- ordering/payment_complete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Pay Order{% endblock %}
+
+{% block content %}
+<h2>Knight Eats System</h2>
+<p>Hello {{ user.username }}!</p>
+<p>Thank you for sending a payment order,<br>An administrator will verify and close your order as soon as possible.</p>
+<form action="{% url 'hub' %}">
+	<input type="submit" value="Go to KnightEats Hub"/>
+</form>
+<br>
+<form action "{% url 'hub' %}" method='post'>
+	{% csrf_token %}
+	{{form_pay}}
+	<input type="submit" value="Send" name="_payOrder"/>
+</form>
+<br>
+<form action="{% url 'logout' %}">
+	<input type="submit" value="Logout"/>
+</form>
+{% endblock %}

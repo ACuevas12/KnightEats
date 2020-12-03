@@ -1,0 +1,21 @@
+<!-- start2.html -->
+{% extends 'base.html' %}
+
+{% block title %}Entry Page{% endblock %}
+
+{% block content %}
+<h2>Knight Eats System</h2>
+<p>Hello {{ user.username }}!</p>
+<p>Welcome to your Homepage,<br>where do you wish to go?</p>
+<form action="{% url 'hub' %}">
+	<input type="submit" value="Go to KnightEats Hub"/>
+</form>
+<p></p>
+<form action="{% url 'my_things' %}">
+	<input type="submit" value="My Things"/>
+</form>
+<p></p>
+<form action="{% url 'logout' %}">
+	<input type="submit" value="Logout"/>
+</form>
+{% endblock %}

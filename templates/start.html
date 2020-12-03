@@ -1,0 +1,16 @@
+<!-- start.html -->
+{% extends 'base.html' %}
+
+{% block title %}Entry Page{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Knight Eats System</h2>
+<p>What do you wish to do today?</p>
+<form action="{% url 'signup' %}">
+	<input type="submit" value="Create an Account"/>
+</form>
+<p></p>
+<form action="{% url 'login' %}">
+	<input type="submit" value="Login to my Account"/>
+</form>
+{% endblock %}
